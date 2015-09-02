@@ -27,6 +27,9 @@ Ext.define('Modera.backend.security.toolscontribution.view.user.List', {
     deleteBtnText: 'Delete',
     stateNewText: 'New',
     stateActiveText: 'Active',
+    stateNotActiveText: 'Not active',
+    stateDeactivatedText: 'Deactivated',
+    stateUnknownText: '--',
 
     // override
     constructor: function(config) {
@@ -73,7 +76,14 @@ Ext.define('Modera.backend.security.toolscontribution.view.user.List', {
                     text: me.stateColumnHeaderText,
                     dataIndex: 'state',
                     renderer: function(v) {
-                        var state = 1 === v ? 'Active' : 'New';
+                            var state;
+                            switch (v) {
+                                case 0: state = 'New'; break;
+                                case 1: state = 'Active'; break;
+                                case 2: state = 'NotActive'; break;
+                                case 3: state = 'Deactivated'; break;
+                                default: state = 'Unknown'; break;
+                            }
                         return me['state' + state + 'Text'];
                     }
                 },

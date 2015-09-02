@@ -60,6 +60,12 @@ class UsersController extends AbstractCrudController
                             $groups[] = $group->getName();
                         }
 
+                        $state = $user->getState();
+                        $isActive = $user->getIsActive();
+                        if ($isActive == 0){
+                            $state +=2;
+                        }
+
                         return array(
                             'id'         => $user->getId(),
                             'username'   => $user->getUsername(),
@@ -67,9 +73,10 @@ class UsersController extends AbstractCrudController
                             'firstName'  => $user->getFirstName(),
                             'lastName'   => $user->getLastName(),
                             'middleName' => $user->getMiddleName(),
-                            'state'      => $user->getState(),
+                            'state'      => $state,
                             'groups'     => $groups,
                         );
+
                     },
                     'compact-list' => ['id', 'username', 'fullname'],
                     'delete-user' => ['username']
