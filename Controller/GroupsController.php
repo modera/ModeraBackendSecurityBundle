@@ -60,8 +60,7 @@ class GroupsController extends AbstractCrudController
         };
 
         $mapEntity = function (array $params, $group, DataMapperInterface $defaultMapper, ContainerInterface $container) {
-            $group->setName($params['name']);
-            $group->setRefName($params['refName']);
+            $defaultMapper->mapData($params, $group);
 
             if ($group->getRefName() === '') {
                 $group->setRefName(null);
