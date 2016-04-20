@@ -62,6 +62,12 @@ class GroupsController extends AbstractCrudController
         $mapEntity = function (array $params, $group, DataMapperInterface $defaultMapper, ContainerInterface $container) {
             $defaultMapper->mapData($params, $group);
 
+            /*
+             * Because of unique constrain we cannot save '' value as refName.
+             * Only one time can, actually. :) So, to allow user use groups without
+             * refName we have to set null by force because of ExtJs empty form value
+             * is ''.
+             */
             if ($group->getRefName() === '') {
                 $group->setRefName(null);
             }
