@@ -10,9 +10,28 @@ class AppKernel extends Kernel
         return array(
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
+            new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new Modera\TranslationsBundle\ModeraTranslationsBundle(),
+            new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
+            #new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
+            new Sli\ExtJsIntegrationBundle\SliExtJsIntegrationBundle(),
+            new Sli\AuxBundle\SliAuxBundle(),
+            new Sli\ExpanderBundle\SliExpanderBundle($this),
+
+            #new Modera\RoutingBundle\ModeraRoutingBundle(),
+            new Modera\FoundationBundle\ModeraFoundationBundle(),
+            new Modera\MjrIntegrationBundle\ModeraMjrIntegrationBundle(),
+            #new Modera\MJRSecurityIntegrationBundle\ModeraMJRSecurityIntegrationBundle(),
+            #new Modera\MJRThemeIntegrationBundle\ModeraMJRThemeIntegrationBundle(),
+            new Modera\DirectBundle\ModeraDirectBundle(),
             new Modera\SecurityBundle\ModeraSecurityBundle(),
+            new Modera\BackendToolsBundle\ModeraBackendToolsBundle(),
+
+            new Modera\ServerCrudBundle\ModeraServerCrudBundle(),
+
+            new Modera\BackendSecurityBundle\ModeraBackendSecurityBundle(),
         );
     }
 
