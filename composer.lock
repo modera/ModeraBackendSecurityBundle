@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "24ba63728cd8cb80b366d42cf97a2708",
-    "content-hash": "fb93aefb893c621c796d287139471ce7",
+    "hash": "df329680e91533eb7732239bc02dd94e",
+    "content-hash": "af1166c68163c48721f0d29d1da289a8",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -864,6 +864,57 @@
                 "sql"
             ],
             "time": "2014-01-12 16:20:24"
+        },
+        {
+            "name": "modera/activity-logger-bundle",
+            "version": "v1.0.0",
+            "target-dir": "Modera/ActivityLoggerBundle",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/modera/ModeraActivityLoggerBundle.git",
+                "reference": "dac3c68756df87577a5701e11f640516c02d5a4d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/modera/ModeraActivityLoggerBundle/zipball/dac3c68756df87577a5701e11f640516c02d5a4d",
+                "reference": "dac3c68756df87577a5701e11f640516c02d5a4d",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "~1.2",
+                "doctrine/orm": "~2.2,>=2.2.3",
+                "php": ">=5.4.0",
+                "sergeil/extjsintegration-bundle": "~1.0",
+                "symfony/framework-bundle": "~2.0",
+                "symfony/symfony": "~2.0"
+            },
+            "require-dev": {
+                "modera/foundation-bundle": "~1.0",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Modera\\ActivityLoggerBundle": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sergei Lissovski",
+                    "email": "sergei.lissovski@modera.org",
+                    "homepage": "http://sergei.lissovski.org/"
+                }
+            ],
+            "time": "2015-01-08 12:43:31"
         },
         {
             "name": "modera/backend-languages-bundle",
