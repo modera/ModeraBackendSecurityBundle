@@ -22,7 +22,7 @@ class UserDataMapperTest extends FunctionalTestCase
 
         $this->mapper = \Phake::partialMock('Modera\BackendSecurityBundle\DataMapper\UserDataMapper', $mapperService, static::$em);
     }
-    
+
     public function testDataMapper_ExcludedFiled()
     {
         $mappedFields = \Phake::makeVisible($this->mapper)->getAllowedFields(User::clazz());
