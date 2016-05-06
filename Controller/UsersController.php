@@ -2,7 +2,6 @@
 
 namespace Modera\BackendSecurityBundle\Controller;
 
-use Doctrine\Common\Util\Debug;
 use Modera\BackendSecurityBundle\ModeraBackendSecurityBundle;
 use Modera\SecurityBundle\Entity\User;
 use Modera\SecurityBundle\Service\UserService;

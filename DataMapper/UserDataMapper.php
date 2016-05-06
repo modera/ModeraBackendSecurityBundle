@@ -18,10 +18,11 @@ class UserDataMapper extends DefaultDataMapper
     protected function getAllowedFields($entityClass)
     {
         $me = $this;
+
         return array_filter(
             parent::getAllowedFields($entityClass),
-            function($fieldName) use($me){
-                if (array_search($fieldName, $me->excludedFields) !== FALSE) {
+            function ($fieldName) use ($me) {
+                if (array_search($fieldName, $me->excludedFields) !== false) {
                     return false;
                 }
 
@@ -34,7 +35,7 @@ class UserDataMapper extends DefaultDataMapper
     {
         parent::mapData($params, $entity);
 
-        if(array_key_exists('meta', $params)) {
+        if (array_key_exists('meta', $params)) {
             if (is_array($params['meta'])) {
                 $entity->setMeta($params['meta']);
             } else {

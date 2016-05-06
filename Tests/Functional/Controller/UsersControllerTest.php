@@ -2,7 +2,6 @@
 
 namespace Modera\BackendSecurityBundle\Tests\Functional\Controller;
 
-use Doctrine\Common\Util\Debug;
 use Doctrine\ORM\Tools\SchemaTool;
 use Modera\ActivityLoggerBundle\Entity\Activity;
 use Modera\BackendSecurityBundle\Controller\UsersController;
@@ -27,7 +26,7 @@ class UsersControllerTest extends FunctionalTestCase
     private static $encoder;
 
     /**
-     * @var User $user
+     * @var User
      */
     private static $user;
 
@@ -110,8 +109,7 @@ class UsersControllerTest extends FunctionalTestCase
 
         $this->assertEquals(static::$user, $user);
 
-        $userMeta = array('rootElement' =>
-            array('subElement'=> 'subElementValue', 'subElement2' => 'subElementValue2')
+        $userMeta = array('rootElement' => array('subElement' => 'subElementValue', 'subElement2' => 'subElementValue2'),
         );
         static::$user->setMeta($userMeta);
 
@@ -121,10 +119,10 @@ class UsersControllerTest extends FunctionalTestCase
 
         $response = $controller->listAction(
             array(
-                'hydration'=> array('profile' => 'list'),
+                'hydration' => array('profile' => 'list'),
                 'page' => 1,
                 'start' => 0,
-                'limit' => 25
+                'limit' => 25,
             )
         );
 
@@ -147,26 +145,25 @@ class UsersControllerTest extends FunctionalTestCase
         $this->assertCount(1, $hydratedUser['groups']);
         $this->assertArrayHasKey('meta', $hydratedUser);
         $this->assertEquals($userMeta, $hydratedUser['meta']);
-
     }
 
     public function testIsMetaInfoStoredOnCreation()
     {
         $userMeta = array(
-            'modera_backend_service_account_plugin'=> array(
-                'isService'=> true,
+            'modera_backend_service_account_plugin' => array(
+                'isService' => true,
                 'password' => '1234',
-            )
+            ),
         );
 
         $params = array(
             'record' => array(
                 'id' => '',
-                'lastName' => "Full Display Name",
-                'username' => "serviceAccount",
-                'email' => "test1@test.com",
-                'meta' => $userMeta
-            )
+                'lastName' => 'Full Display Name',
+                'username' => 'serviceAccount',
+                'email' => 'test1@test.com',
+                'meta' => $userMeta,
+            ),
         );
 
         $controller = $this->getController();
@@ -175,7 +172,7 @@ class UsersControllerTest extends FunctionalTestCase
 
         $this->assertTrue($response['success']);
         /**
-         * @var User[] $userList
+         * @var User[]
          */
         $userList = static::$em->getRepository(User::clazz())->findAll();
 
@@ -192,11 +189,11 @@ class UsersControllerTest extends FunctionalTestCase
         $params = array(
             'record' => array(
                 'id' => '',
-                'lastName' => "Full Display Name",
-                'username' => "serviceAccount_NoMeta",
-                'email' => "test3@test.com",
-                'meta' => "",
-            )
+                'lastName' => 'Full Display Name',
+                'username' => 'serviceAccount_NoMeta',
+                'email' => 'test3@test.com',
+                'meta' => '',
+            ),
         );
 
         $controller = $this->getController();
@@ -205,7 +202,7 @@ class UsersControllerTest extends FunctionalTestCase
 
         $this->assertTrue($response['success']);
         /**
-         * @var User[] $userList
+         * @var User[]
          */
         $userList = static::$em->getRepository(User::clazz())->findAll();
 
@@ -225,10 +222,10 @@ class UsersControllerTest extends FunctionalTestCase
     public function testIsMetaInfoStoredOnUpdate(User $user)
     {
         $userMeta = array(
-            'modera_backend_service_account_plugin'=> array(
-                'isService'=> true,
+            'modera_backend_service_account_plugin' => array(
+                'isService' => true,
                 'password' => '5678',
-            )
+            ),
         );
 
         $params = array(
@@ -237,8 +234,8 @@ class UsersControllerTest extends FunctionalTestCase
                 'lastName' => $user->getLastName(),
                 'username' => $user->getUsername(),
                 'email' => $user->getEmail(),
-                'meta' => $userMeta
-            )
+                'meta' => $userMeta,
+            ),
         );
 
         $controller = $this->getController();
@@ -246,7 +243,7 @@ class UsersControllerTest extends FunctionalTestCase
         $response = $controller->updateAction($params);
 
         $this->assertTrue($response['success']);
-        /**
+        /*
          * @var User[] $userList
          */
         $userFromDb = static::$em->getRepository(User::clazz())->find($user->getId());
@@ -268,8 +265,8 @@ class UsersControllerTest extends FunctionalTestCase
                 'lastName' => $user->getLastName(),
                 'username' => $user->getUsername(),
                 'email' => $user->getEmail(),
-                'meta' => ''
-            )
+                'meta' => '',
+            ),
         );
 
         $controller = $this->getController();
@@ -278,7 +275,7 @@ class UsersControllerTest extends FunctionalTestCase
 
         $this->assertTrue($response['success']);
         /**
-         * @var User[] $userList
+         * @var User[]
          */
         $userList = static::$em->getRepository(User::clazz())->findAll();
 
