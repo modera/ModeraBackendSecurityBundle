@@ -32,7 +32,9 @@ class UsersController extends AbstractCrudController
 
         return array(
             'entity' => User::clazz(),
-            'data_mapper' => 'modera_backend_security.data_mapper.user_data_mapper',
+            'create_default_data_mapper' => function(ContainerInterface $container) {
+                return $this->container->get('modera_backend_security.data_mapper.user_data_mapper');
+            },
             'security' => array(
                 'actions' => array(
                     'create' => ModeraBackendSecurityBundle::ROLE_MANAGE_USER_PROFILES,
