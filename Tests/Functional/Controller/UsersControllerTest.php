@@ -171,7 +171,7 @@ class UsersControllerTest extends FunctionalTestCase
         $response = $controller->createAction($params);
 
         $this->assertTrue($response['success']);
-        /**
+        /*
          * @var User[]
          */
         $userList = static::$em->getRepository(User::clazz())->findAll();
@@ -201,7 +201,7 @@ class UsersControllerTest extends FunctionalTestCase
         $response = $controller->createAction($params);
 
         $this->assertTrue($response['success']);
-        /**
+        /*
          * @var User[]
          */
         $userList = static::$em->getRepository(User::clazz())->findAll();
@@ -274,7 +274,7 @@ class UsersControllerTest extends FunctionalTestCase
         $response = $controller->updateAction($params);
 
         $this->assertTrue($response['success']);
-        /**
+        /*
          * @var User[]
          */
         $userList = static::$em->getRepository(User::clazz())->findAll();

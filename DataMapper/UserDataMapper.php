@@ -5,6 +5,10 @@ namespace Modera\BackendSecurityBundle\DataMapper;
 use Modera\ServerCrudBundle\DataMapping\DefaultDataMapper;
 
 /**
+ * This class add support of excluded Fields, that will not me automatically
+ * mapped.
+ * Also User meta field mapping requires some by hand handling.
+ *
  * @author    Alex Plaksin <alex.plaksin@modera.net>
  * @copyright 2016 Modera Foundation
  */
@@ -15,6 +19,9 @@ class UserDataMapper extends DefaultDataMapper
      */
     protected $excludedFields = array('meta');
 
+    /**
+     * {@inheritdoc}
+     */
     protected function getAllowedFields($entityClass)
     {
         $me = $this;
@@ -31,6 +38,9 @@ class UserDataMapper extends DefaultDataMapper
         );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function mapData(array $params, $entity)
     {
         parent::mapData($params, $entity);
