@@ -8,6 +8,8 @@ use Modera\FoundationBundle\Translation\T;
 use Modera\BackendLanguagesBundle\Entity\UserSettings;
 
 /**
+ * @deprecated  Since v2.56.0, use PasswordManager::encodeAndSetPasswordAndThenEmailIt() method.
+ *
  * @author    Sergei Vizel <sergei.vizel@modera.org>
  * @copyright 2014 Modera Foundation
  */
@@ -35,7 +37,12 @@ class MailService implements MailServiceInterface
     /**
      * @param \Swift_Mailer $mailer
      */
-    public function __construct(EntityManagerInterface $em, \Swift_Mailer $mailer, $defaultLocale = 'en', $mailSender = 'no-reply@no-reply')
+    public function __construct(
+        EntityManagerInterface $em,
+        \Swift_Mailer $mailer,
+        $defaultLocale = 'en',
+        $mailSender = 'no-reply@no-reply'
+    )
     {
         $this->em = $em;
         $this->mailer = $mailer;
